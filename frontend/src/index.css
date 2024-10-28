@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Imperial+Script&family=League+Spartan:wght@100..900&family=Rasa:ital,wght@0,300..700;1,300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Imperial+Script&family=League+Gothic&family=League+Spartan:wght@100..900&family=Rasa:ital,wght@0,300..700;1,300..700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-siliguri {
+  font-family: "Hind Siliguri", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.league-spartan {
+  font-family: "League Spartan", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  --cursor-color: red;
+  --cursor-width: 2px;
+  --cursor-border-color: white;
+}
+
+h1 {
+  font-family: "League Gothic", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
