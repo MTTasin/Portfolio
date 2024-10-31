@@ -13,8 +13,9 @@ import git from "./../assets/icons/git.svg";
 import figma from "./../assets/icons/figma.svg";
 import vscode from "./../assets/icons/vscode.svg";
 import Card from "../Components/Card";
-import { FaArrowRight } from "react-icons/fa6";
+import { HiOutlineArrowRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { Button } from "flowbite-react";
 
 export default function Home() {
   return (
@@ -153,15 +154,9 @@ export default function Home() {
         <Card />
       </div>
       <div>
-        <div className="w-[80%] grid grid-cols-2 gap-20  mx-auto mb-10">
-          <Link to="/projects" className="flex justify-center bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 md:py-5 px-4 rounded">
-            <FaArrowRight className="text-lg my-auto mx-1" />
-            All Projects
-          </Link>
-          <Link to="/contact" className="flex justify-center bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 md:py-5 px-4 rounded">
-            <FaArrowRight className="text-lg my-auto mx-1" />
-            Contact me
-          </Link>
+        <div className="w-full md:w-[80%] grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-20  mx-auto mb-10">
+          <Link to="/projects" className="mx-auto"><Button color="dark"><HiOutlineArrowRight className="mr-2 h-5 w-5" />All Projects</Button></Link>
+      <Link to="/contact" className="mx-auto"><Button color="light"><HiOutlineArrowRight className="mr-2 h-5 w-5" />Contact me</Button></Link>
         </div>
       </div>
     </>

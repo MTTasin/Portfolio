@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Button, Drawer, Navbar } from "flowbite-react";
 import { FaXTwitter, FaX, FaLinkedin } from "react-icons/fa6";
@@ -10,26 +10,29 @@ export default function Header() {
 
   const handleClose = () => setIsOpen(false);
 
-  const nav = document.getElementById("navbar");
-  // nav.classList.remove("absolute", window.scrollY > 100);
-
-  window.onscroll = () => {
-    if (window.scrollY > 100) {
-      nav.classList.add("fixed");
-      nav.classList.remove("absolute");
-    } else {
-      nav.classList.add("absolute");
-      nav.classList.remove("fixed");
-    }
-  };
+  
+    const [isScrolled, setIsScrolled] = useState(false);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 100);
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+  
 
   return (
     <>
       <Navbar
         id="navbar"
-        className="navbar absolute top-0 flex items-center justify-beetween bg-black w-full mx-auto"
+        className={`navbar z-10 ${isScrolled ? "fixed" : "absolute"} top-0 flex items-center justify-beetween bg-black w-full mx-auto`}
       >
-        <div className="navbar-start mx-5 md:mx-20 my-10">
+        <div className={`navbar-start mx-5 md:mx-20 ${isScrolled ? "my-0" : "my-10"}`}>
           <Link to="/">
             <img
               src="/logo.png"
@@ -38,7 +41,7 @@ export default function Header() {
             />
           </Link>
         </div>
-        <div className="navbar-end mx-5 md:mx-20 my-10">
+        <div className={`navbar-end mx-5 md:mx-20 ${isScrolled ? "my-0" : "my-10"}`}>
           <TbMenuDeep
             className="text-white text-3xl"
             onClick={() => setIsOpen(!isOpen)}
