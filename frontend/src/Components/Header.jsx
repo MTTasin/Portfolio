@@ -41,6 +41,15 @@ export default function Header() {
             />
           </Link>
         </div>
+        <div className={`navbar-center ${isScrolled ? "my-0 block" : "hidden"}`}>
+          <Link
+            className="text-white text-xl monoton-regular"
+            to="/"
+            onClick={handleClose}
+          >
+            M.T.Tasin
+          </Link>
+        </div>
         <div className={`navbar-end mx-5 md:mx-20 ${isScrolled ? "my-0" : "my-10"}`}>
           <TbMenuDeep
             className="text-white text-3xl"

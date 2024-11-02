@@ -18,6 +18,14 @@ import { Link } from "react-router-dom";
 import { Button } from "flowbite-react";
 
 export default function Home() {
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+
+
+
   return (
     <>
       <Helmet>
@@ -155,8 +163,18 @@ export default function Home() {
       </div>
       <div>
         <div className="w-full md:w-[80%] grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-20  mx-auto mb-10">
-          <Link to="/projects" className="mx-auto"><Button color="dark"><HiOutlineArrowRight className="mr-2 h-5 w-5" />All Projects</Button></Link>
-      <Link to="/contact" className="mx-auto"><Button color="light"><HiOutlineArrowRight className="mr-2 h-5 w-5" />Contact me</Button></Link>
+          <Link to="/projects" className="mx-auto">
+            <Button color="dark" onClick={scrollToTop}>
+              <HiOutlineArrowRight className="mr-2 h-5 w-5" />
+              All Projects
+            </Button>
+          </Link>
+          <Link to="/contact" className="mx-auto">
+            <Button color="light" onClick={scrollToTop}>
+              <HiOutlineArrowRight className="mr-2 h-5 w-5" />
+              Contact me
+            </Button>
+          </Link>
         </div>
       </div>
     </>
