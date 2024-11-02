@@ -53,9 +53,9 @@ export default function Home() {
         {/* <base href="https://tasinblog.com" /> */}
       </Helmet>
 
-      <div className="bg-black h-[100vh] text-8xl w-full flex flex-col justify-center items-center text-white">
+      <div className="bg-black h-[100vh] text-6xl md:text-8xl w-full flex flex-col justify-center items-center text-white">
         <h1 className="uppercase">M.T. Tasin</h1>
-        <p className="text-3xl league-spartan text-center">
+        <p className="md:text-3xl text-xl league-spartan text-center letspace">
           I am a Full Stack Web Developer.
         </p>
       </div>
@@ -164,13 +164,13 @@ export default function Home() {
       <div>
         <div className="w-full md:w-[80%] grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-20  mx-auto mb-10">
           <Link to="/projects" className="mx-auto">
-            <Button color="dark" onClick={scrollToTop}>
+            <Button color="dark" onClick={scrollToTop} className="px-16 md:px-32">
               <HiOutlineArrowRight className="mr-2 h-5 w-5" />
               All Projects
             </Button>
           </Link>
           <Link to="/contact" className="mx-auto">
-            <Button color="light" onClick={scrollToTop}>
+            <Button color="light" onClick={scrollToTop} className="px-16 md:px-32">
               <HiOutlineArrowRight className="mr-2 h-5 w-5" />
               Contact me
             </Button>

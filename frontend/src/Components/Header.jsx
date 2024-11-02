@@ -10,6 +10,10 @@ export default function Header() {
 
   const handleClose = () => setIsOpen(false);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
   
     const [isScrolled, setIsScrolled] = useState(false);
   
@@ -33,7 +37,7 @@ export default function Header() {
         className={`navbar z-10 ${isScrolled ? "fixed" : "absolute"} top-0 flex items-center justify-beetween bg-black w-full mx-auto`}
       >
         <div className={`navbar-start mx-5 md:mx-20 ${isScrolled ? "my-0" : "my-10"}`}>
-          <Link to="/">
+          <Link to="/" onClick={scrollToTop}>
             <img
               src="/logo.png"
               alt="M.T. Tasin"
@@ -45,7 +49,7 @@ export default function Header() {
           <Link
             className="text-white text-xl monoton-regular"
             to="/"
-            onClick={handleClose}
+            onClick={scrollToTop}
           >
             M.T.Tasin
           </Link>

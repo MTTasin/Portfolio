@@ -7,6 +7,7 @@ import Projects from "./Pages/Projects";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import NotFound from "./Pages/404";
+import ProjectDetails from "./Pages/ProjectDetails";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/projects/:id" element={<ProjectDetails />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

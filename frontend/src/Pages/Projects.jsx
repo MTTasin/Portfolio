@@ -45,7 +45,7 @@ export default function Projects() {
 
       <div className="bg-black h-[100vh] text-8xl w-full flex flex-col justify-center items-center text-white">
         <h1 className="uppercase text-center">My Projects</h1>
-        <p className="text-3xl league-spartan text-center">
+        <p className="text-3xl league-spartan text-center letspace">
           Made with Love.
         </p>
       </div>
@@ -63,7 +63,7 @@ export default function Projects() {
 
       <div className="my-10 flex justify-center">
       <Link to="/contact" className="mx-auto">
-            <Button color="light" onClick={scrollToTop}>
+            <Button color="light" onClick={scrollToTop} className="px-16 md:px-32">
               <HiOutlineArrowRight className="mr-2 h-5 w-5" />
               Contact me
             </Button>
