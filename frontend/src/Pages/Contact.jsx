@@ -50,7 +50,7 @@ export default function Contact() {
                 <span className="bg-yellow-100">The form below is not a working form. As it leads to spam.</span>
               </p>
 
-              <form action="https://api.web3forms.com/submit" className="mt-10">
+              <form className="mt-10">
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div className="relative z-0">
                     <input
@@ -89,6 +89,7 @@ export default function Contact() {
                 <div className="flex justify-center">
                 <button
                   type="submit"
+                  onClick={(e) => e.preventDefault()}
                   className="mt-5 rounded-md bg-black px-10 py-2 text-white"
                 >
                   Send Message

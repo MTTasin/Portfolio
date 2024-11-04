@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Button, Drawer, Navbar } from "flowbite-react";
-import { FaXTwitter, FaX, FaLinkedin } from "react-icons/fa6";
+import { FaXTwitter, FaX } from "react-icons/fa6";
+import { LuLinkedin } from "react-icons/lu";
 import { FiGithub } from "react-icons/fi";
 import { TbMenuDeep } from "react-icons/tb";
 
@@ -97,9 +98,7 @@ export default function Header() {
               <a href="https://github.com/MTTasin" target="_blank">
                 <FiGithub />
               </a>
-              <a href="https://www.linkedin.com/in/mttasin/">
-                <FaLinkedin />
-              </a>
+              <a href="https://www.linkedin.com/in/mttasin/" target="_blank"><LuLinkedin className="text-3xl" /></a>
             </div>
           </div>
         </div>
