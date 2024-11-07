@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { Button, Drawer, Navbar } from "flowbite-react";
 import { FaXTwitter, FaX } from "react-icons/fa6";
-import { LuLinkedin } from "react-icons/lu";
+import { LuFacebook, LuLinkedin } from "react-icons/lu";
 import { FiGithub } from "react-icons/fi";
 import { TbMenuDeep } from "react-icons/tb";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const handleClose = () => setIsOpen(false);
 
@@ -74,16 +75,16 @@ export default function Header() {
               <h2 className="-rotate-90 text-3xl">Menu</h2>
             </div>
             <div className="col-span-5 flex flex-col justify-center items-start md:text-7xl text-6xl font-bold md:m-20">
-              <NavLink onClick={handleClose} className="my-5" to="/">
+              <NavLink onClick={handleClose} className={`my-5 hover:text-white hover:bg-black ${location.pathname === "/" ? "text-white bg-black p-5" : "text-black"}`} to="/">
                 Home
               </NavLink>
-              <NavLink onClick={handleClose} className="my-5" to="/projects">
+              <NavLink onClick={handleClose} className={`my-5 hover:text-white hover:bg-black ${location.pathname === "/projects" ? "text-white bg-black p-5" : "text-black"}`} to="/projects">
                 Projects
               </NavLink>
-              <NavLink onClick={handleClose} className="my-5" to="/about">
+              <NavLink onClick={handleClose} className={`my-5 hover:text-white hover:bg-black ${location.pathname === "/about" ? "text-white bg-black p-5" : "text-black"}`} to="/about">
                 About
               </NavLink>
-              <NavLink onClick={handleClose} className="my-5" to="/contact">
+              <NavLink onClick={handleClose} className={`my-5 hover:text-white hover:bg-black ${location.pathname === "/contact" ? "text-white bg-black p-5" : "text-black"}`} to="/contact">
                 Contact
               </NavLink>
             </div>
@@ -92,13 +93,16 @@ export default function Header() {
             <div className="my-3">m.t.tasin20@gmail.com</div>
             <div className="my-3">+880 1974 283081</div>
             <div className="my-3 flex flex-row justify-center md:justify-start gap-5">
-              <a href="https://x.com/MTTasin1" target="_blank">
+              <a href="https://www.facebook.com/MD.TahmimTasin" target="_blank" className="hover:text-white hover:bg-black">
+                <LuFacebook />
+              </a>
+              <a href="https://x.com/MTTasin1" target="_blank" className="hover:text-white hover:bg-black">
                 <FaXTwitter />
-              </a>{" "}
-              <a href="https://github.com/MTTasin" target="_blank">
+              </a>
+              <a href="https://github.com/MTTasin" target="_blank" className="hover:text-white hover:bg-black">
                 <FiGithub />
               </a>
-              <a href="https://www.linkedin.com/in/mttasin/" target="_blank"><LuLinkedin className="text-3xl" /></a>
+              <a href="https://www.linkedin.com/in/mttasin/" target="_blank" className="hover:text-white hover:bg-black"><LuLinkedin className="text-3xl" /></a>
             </div>
           </div>
         </div>

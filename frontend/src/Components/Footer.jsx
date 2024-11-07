@@ -1,5 +1,5 @@
 import { IoCopyOutline, IoCallOutline } from "react-icons/io5";
-import { LuCopyCheck, LuGithub, LuTwitter, LuLinkedin } from "react-icons/lu";
+import { LuCopyCheck, LuGithub, LuTwitter, LuLinkedin, LuFacebook } from "react-icons/lu";
 import { CiMail } from "react-icons/ci";
 import { useState } from "react";
 import copy from "copy-to-clipboard";
@@ -47,7 +47,7 @@ export default function Footer() {
             {copymail ? (
               <Tooltip content="Copied"><LuCopyCheck className="text-xl md:text-3xl" /></Tooltip>
             ) : (
-              <Tooltip content="Copy Email"><IoCopyOutline className="text-xl md:text-3xl" onClick={copyEmail} /></Tooltip>
+              <Tooltip content="Copy Email"><IoCopyOutline className="text-xl md:text-3xl hover:text-gray-500" onClick={copyEmail} /></Tooltip>
             )}
           </span>
         </div>
@@ -60,7 +60,7 @@ export default function Footer() {
             {copycall ? (
               <Tooltip content="Copied"><LuCopyCheck className="text-xl md:text-3xl" /></Tooltip>
             ) : (
-              <Tooltip content="Copy Phone Number"><IoCopyOutline className="text-xl md:text-3xl" onClick={copyCall} /></Tooltip>
+              <Tooltip content="Copy Phone Number"><IoCopyOutline className="text-xl md:text-3xl hover:text-gray-500" onClick={copyCall} /></Tooltip>
             )}
           </span>
         </div>
@@ -69,13 +69,16 @@ export default function Footer() {
           <p className="text-center">You may also find me on this platforms!</p>
         </div>
         <div className="flex justify-center items-center gap-10 my-5">
-          <span>
+          <span className="hover:text-gray-500">
+            <a href="https://www.facebook.com/MD.TahmimTasin" target="_blank"><LuFacebook className="text-3xl" /></a>
+          </span>
+          <span className="hover:text-gray-500">
             <a href="https://github.com/MTTasin" target="_blank"><LuGithub className="text-3xl" /></a>
           </span>
-          <span>
+          <span className="hover:text-gray-500">
             <a href="https://x.com/MTTasin1" target="_blank"><LuTwitter className="text-3xl" /></a>
           </span>
-          <span>
+          <span className="hover:text-gray-500">
             <a href="https://www.linkedin.com/in/mttasin/" target="_blank"><LuLinkedin className="text-3xl" /></a>
           </span>
         </div>
@@ -84,4 +87,3 @@ export default function Footer() {
   );
 }
 
-// {copymail ?  (<LuCopyCheck className="text-3xl" />) : (<IoCopyOutline className="text-3xl" onClick={copyEmail} />)}

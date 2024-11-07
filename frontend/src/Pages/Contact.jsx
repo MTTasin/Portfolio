@@ -1,9 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import Card from "../Components/Card";
-import { HiOutlineArrowRight } from "react-icons/hi";
-import { Link } from "react-router-dom";
-import { Button } from "flowbite-react";
-import { useState, useEffect } from "react";
+import { FaRegCircleDot, FaXTwitter } from "react-icons/fa6";
+import { LuLinkedin, LuFacebook } from "react-icons/lu";
+import { FiGithub } from "react-icons/fi";
 
 export default function Contact() {
   return (
@@ -41,12 +40,29 @@ export default function Contact() {
       </div>
 
       <div>
+
+        <div>
+        <p className="text-4xl league-spartan-bold text-center mt-10">Contact me on my social media</p>
+        <div className="mt-10 flex flex-row justify-center gap-5 text-5xl">
         
-          <div className="mx-5 flex min-h-screen items-center justify-start bg-white">
+              <a href="https://www.facebook.com/MD.TahmimTasin" target="_blank" className="hover:text-gray-500">
+                <LuFacebook />
+              </a>
+              <a href="https://x.com/MTTasin1" target="_blank" className="hover:text-gray-500">
+                <FaXTwitter />
+              </a>
+              <a href="https://github.com/MTTasin" target="_blank" className="hover:text-gray-500">
+                <FiGithub />
+              </a>
+              <a href="https://www.linkedin.com/in/mttasin/" target="_blank" className="hover:text-gray-500"><LuLinkedin /></a>
+            </div>
+        </div>
+        
+          <div className="mx-5 mt-16 mb-10 flex items-center justify-start bg-white">
             <div className="mx-auto w-full max-w-lg">
-              <p className="text-4xl league-spartan-bold">Contact us</p>
+              <p className="text-4xl league-spartan-bold text-center">Or</p>
               <p className="mt-3">
-                Email me at m.t.tasin20@gmail.com or in my social media accounts. <br />
+                Email me at m.t.tasin20@gmail.com<br />
                 <span className="bg-yellow-100">The form below is not a working form. As it leads to spam.</span>
               </p>
 

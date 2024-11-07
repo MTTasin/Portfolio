@@ -43,9 +43,9 @@ export default function Projects() {
 
 
 
-      <div className="bg-black h-[100vh] text-8xl w-full flex flex-col justify-center items-center text-white">
+      <div className="bg-black h-[100vh] text-6xl md:text-8xl w-full flex flex-col justify-center items-center text-white">
         <h1 className="uppercase text-center">My Projects</h1>
-        <p className="text-3xl league-spartan text-center letspace">
+        <p className="md:text-3xl text-xl league-spartan text-center letspace">
           Made with Love.
         </p>
       </div>
