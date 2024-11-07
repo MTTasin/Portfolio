@@ -1,13 +1,31 @@
 import { IoCopyOutline, IoCallOutline } from "react-icons/io5";
 import { LuCopyCheck, LuGithub, LuTwitter, LuLinkedin, LuFacebook } from "react-icons/lu";
 import { CiMail } from "react-icons/ci";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
 import { Tooltip } from "flowbite-react";
+import axios from "axios";
 
 export default function Footer() {
   const [copymail, setCopymail] = useState(false);
   const [copycall, setCopycall] = useState(false);
+
+  const [socialLinks, setSocialLinks] = useState([]);
+
+  function fetchSocialLinks() {
+    axios
+      .get("http://192.168.0.105:8000/social_link/")
+      .then((response) => {
+        setSocialLinks(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    fetchSocialLinks();
+  }, []);
 
   function copyEmail() {
     copy("m.t.tasin20@gmail.com");
@@ -70,16 +88,16 @@ export default function Footer() {
         </div>
         <div className="flex justify-center items-center gap-10 my-5">
           <span className="hover:text-gray-500">
-            <a href="https://www.facebook.com/MD.TahmimTasin" target="_blank"><LuFacebook className="text-3xl" /></a>
+            <a href={socialLinks.facebook} target="_blank"><LuFacebook className="text-3xl" /></a>
           </span>
           <span className="hover:text-gray-500">
-            <a href="https://github.com/MTTasin" target="_blank"><LuGithub className="text-3xl" /></a>
+            <a href={socialLinks.github} target="_blank"><LuGithub className="text-3xl" /></a>
           </span>
           <span className="hover:text-gray-500">
-            <a href="https://x.com/MTTasin1" target="_blank"><LuTwitter className="text-3xl" /></a>
+            <a href={socialLinks.twitter} target="_blank"><LuTwitter className="text-3xl" /></a>
           </span>
           <span className="hover:text-gray-500">
-            <a href="https://www.linkedin.com/in/mttasin/" target="_blank"><LuLinkedin className="text-3xl" /></a>
+            <a href={socialLinks.linkedin} target="_blank"><LuLinkedin className="text-3xl" /></a>
           </span>
         </div>
       </div>

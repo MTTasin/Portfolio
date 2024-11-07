@@ -5,6 +5,7 @@ import { FaXTwitter, FaX } from "react-icons/fa6";
 import { LuFacebook, LuLinkedin } from "react-icons/lu";
 import { FiGithub } from "react-icons/fi";
 import { TbMenuDeep } from "react-icons/tb";
+import axios from "axios";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +31,26 @@ export default function Header() {
         window.removeEventListener('scroll', handleScroll);
       };
     }, []);
+
+
+
+
+    const [socialLinks, setSocialLinks] = useState([]);
+
+  function fetchSocialLinks() {
+    axios
+      .get("http://192.168.0.105:8000/social_link/")
+      .then((response) => {
+        setSocialLinks(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    fetchSocialLinks();
+  }, []);
   
 
   return (
@@ -93,16 +114,16 @@ export default function Header() {
             <div className="my-3">m.t.tasin20@gmail.com</div>
             <div className="my-3">+880 1974 283081</div>
             <div className="my-3 flex flex-row justify-center md:justify-start gap-5">
-              <a href="https://www.facebook.com/MD.TahmimTasin" target="_blank" className="hover:text-white hover:bg-black">
+              <a href={socialLinks.facebook} target="_blank" className="hover:text-white hover:bg-black">
                 <LuFacebook />
               </a>
-              <a href="https://x.com/MTTasin1" target="_blank" className="hover:text-white hover:bg-black">
+              <a href={socialLinks.twitter} target="_blank" className="hover:text-white hover:bg-black">
                 <FaXTwitter />
               </a>
-              <a href="https://github.com/MTTasin" target="_blank" className="hover:text-white hover:bg-black">
+              <a href={socialLinks.github} target="_blank" className="hover:text-white hover:bg-black">
                 <FiGithub />
               </a>
-              <a href="https://www.linkedin.com/in/mttasin/" target="_blank" className="hover:text-white hover:bg-black"><LuLinkedin className="text-3xl" /></a>
+              <a href={socialLinks.linkedin} target="_blank" className="hover:text-white hover:bg-black"><LuLinkedin className="text-3xl" /></a>
             </div>
           </div>
         </div>

@@ -26,7 +26,7 @@ function App() {
           </Routes>
         </Layout>
 
-        <AnimatedCursor
+        {/* <AnimatedCursor
         outerStyle={{
           border: '3px solid var(--cursor-border-color)'
         }}
@@ -65,7 +65,7 @@ function App() {
       ]}
         
         
-        />
+        /> */}
       </HelmetProvider>
     </>
   );

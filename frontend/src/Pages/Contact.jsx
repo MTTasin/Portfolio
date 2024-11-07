@@ -3,8 +3,29 @@ import Card from "../Components/Card";
 import { FaRegCircleDot, FaXTwitter } from "react-icons/fa6";
 import { LuLinkedin, LuFacebook } from "react-icons/lu";
 import { FiGithub } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Contact() {
+
+  const [socialLinks, setSocialLinks] = useState([]);
+
+  function fetchSocialLinks() {
+    axios
+      .get("http://192.168.0.105:8000/social_link/")
+      .then((response) => {
+        setSocialLinks(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    fetchSocialLinks();
+  }, []);
+
+
   return (
     <>
       <Helmet>
@@ -45,16 +66,16 @@ export default function Contact() {
         <p className="text-4xl league-spartan-bold text-center mt-10">Contact me on my social media</p>
         <div className="mt-10 flex flex-row justify-center gap-5 text-5xl">
         
-              <a href="https://www.facebook.com/MD.TahmimTasin" target="_blank" className="hover:text-gray-500">
+              <a href={socialLinks.facebook} target="_blank" className="hover:text-gray-500">
                 <LuFacebook />
               </a>
-              <a href="https://x.com/MTTasin1" target="_blank" className="hover:text-gray-500">
+              <a href={socialLinks.twitter} target="_blank" className="hover:text-gray-500">
                 <FaXTwitter />
               </a>
-              <a href="https://github.com/MTTasin" target="_blank" className="hover:text-gray-500">
+              <a href={socialLinks.github} target="_blank" className="hover:text-gray-500">
                 <FiGithub />
               </a>
-              <a href="https://www.linkedin.com/in/mttasin/" target="_blank" className="hover:text-gray-500"><LuLinkedin /></a>
+              <a href={socialLinks.linkedin} target="_blank" className="hover:text-gray-500"><LuLinkedin /></a>
             </div>
         </div>
         

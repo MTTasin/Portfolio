@@ -9,16 +9,31 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { FaHome, FaCalendarDay } from "react-icons/fa";
 import { FaRegCircleDot, FaXTwitter } from "react-icons/fa6";
-import { LuLinkedin } from "react-icons/lu";
+import { LuLinkedin, LuFacebook } from "react-icons/lu";
 import { FiGithub } from "react-icons/fi";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 export default function ProjectDetails() {
 
+  const [socialLinks, setSocialLinks] = useState([]);
 
+  function fetchSocialLinks() {
+    axios
+      .get("http://192.168.0.105:8000/social_link/")
+      .then((response) => {
+        setSocialLinks(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    fetchSocialLinks();
+  }, []);
 
 
 
@@ -125,13 +140,16 @@ export default function ProjectDetails() {
         <div>
           <h2 className="text-2xl league-spartan mb-2 mt-10">Follow me</h2>
           <div className="my-3 flex flex-row justify-start gap-5 text-2xl">
-              <a href="https://x.com/MTTasin1" target="_blank" className="hover:text-gray-500">
+              <a href={socialLinks.facebook} target="_blank" className="hover:text-gray-500">
+                <LuFacebook />
+              </a>
+              <a href={socialLinks.twitter} target="_blank" className="hover:text-gray-500">
                 <FaXTwitter />
-              </a>{" "}
-              <a href="https://github.com/MTTasin" target="_blank" className="hover:text-gray-500">
+              </a>
+              <a href={socialLinks.github} target="_blank" className="hover:text-gray-500">
                 <FiGithub />
               </a>
-              <a href="https://www.linkedin.com/in/mttasin/" target="_blank" className="hover:text-gray-500"><LuLinkedin /></a>
+              <a href={socialLinks.linkedin} target="_blank" className="hover:text-gray-500"><LuLinkedin /></a>
             </div>
         </div>
 

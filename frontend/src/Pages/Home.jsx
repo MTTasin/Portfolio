@@ -17,12 +17,41 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { Button } from "flowbite-react";
 
+
+import axios from "axios";
+import { useState, useEffect } from "react";
+
 export default function Home() {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
+
+
+
+const [aboutText, setAboutText] = useState("");
+const [featured_portfolio, setFeatured_portfolio] = useState([]);
+
+
+function fetchAboutText() {
+  axios
+    .get("http://192.168.0.105:8000/about_me/")
+    .then((response) => {
+      setAboutText(response.data[0].about);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+
+useEffect(() => {
+  fetchAboutText();
+}, []);
+
+
+console.log(aboutText);
 
 
 
@@ -62,15 +91,8 @@ export default function Home() {
 
       <div className="mt-20 mx-auto xl:w-1/3 lg:w-1/2 md:w-2/3 w-[90%] flex flex-col justify-center">
         <h2 className="text-3xl league-spartan-bold mb-5">About me</h2>
-        <p className="roboto-regular text-lg">
-          Hi! I am Tasin. I have been actively working as a Full Stack Web
-          Developer for more than one year. My primary expertise lies in
-          building custom-coded websites tailored to your specific requirements.
-          I'm dedicated to implement clean, maintainable and secure code around
-          all my projects. With over a year of expertise I'm proficient in
-          React, Django, JavaScript, Python, Tailwind CSS, SQL and other
-          technologies.
-        </p>
+        <div className="roboto-regular text-lg" dangerouslySetInnerHTML={{ __html: aboutText }}>
+        </div>
       </div>
       <div className="mt-20 mx-auto xl:w-1/3 lg:w-1/2 md:w-2/3 w-[90%] flex flex-col justify-center">
         <h2 className="text-3xl league-spartan-bold mb-5">My Skills</h2>

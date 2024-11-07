@@ -6,11 +6,48 @@ import { Button } from "flowbite-react";
 import { useState, useEffect } from "react";
 import MyImg from "../Components/MyImg";
 import me from "./../assets/img/me.jpg"
+import axios from "axios";
 
 export default function About() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+
+
+  const [backgroundText, setBackgroundText] = useState("");
+  const [hobbyText, setHobbyText] = useState("");
+  
+
+  function fetchBackgroundText() {
+    axios
+      .get("http://192.168.0.105:8000/my_background/")
+      .then((response) => {
+        setBackgroundText(response.data[0].background);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  function fetchHobbyText() {
+    axios
+      .get("http://192.168.0.105:8000/my_hobby_and_interest/")
+      .then((response) => {
+        setHobbyText(response.data[0].hobbies);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+
+  useEffect(() => {
+    fetchBackgroundText();
+    fetchHobbyText();
+  }, []);
+
+  console.log(backgroundText, hobbyText);
 
   return (
     <>
@@ -66,7 +103,7 @@ export default function About() {
 <MyImg />
       <div className="mt-20 mx-auto xl:w-1/2 lg:w-1/2 md:w-2/3 w-[90%] flex flex-col justify-center">
         <h2 className="text-3xl league-spartan-bold mb-5">My Background</h2>
-        <p className="roboto-regular text-lg">
+        {/* <p className="roboto-regular text-lg">
           Hi! I am Mohammad Tahmim Tasin. I have a strong and diverse background
           in both technology and design. My skills range from web development
           using HTML, CSS, and JavaScript to advanced programming in Python,
@@ -85,12 +122,15 @@ export default function About() {
           <br />
           My continuous quest for knowledge and skill enhancement makes me a
           valuable asset in the tech world.
-        </p>
+        </p> */}
+
+<div className="roboto-regular text-lg" dangerouslySetInnerHTML={{ __html: backgroundText }}>
+</div>
 
         <h2 className="text-3xl league-spartan-bold mt-16 mb-5">
           My hobbies & interests
         </h2>
-        <p className="roboto-regular text-lg">
+        {/* <p className="roboto-regular text-lg">
           I have a range of hobbies and interests that keep me engaged and
           constantly learning. <br /> <br /> I love playing football, which keeps me active
           and energized. I'm also an avid gamer, and you'll often find me
@@ -101,7 +141,10 @@ export default function About() {
           and innovations. <br /><br /> I also dabble in politics, keeping a keen eye on
           current events and developments. <br /><br /> All these interests make my life
           vibrant and dynamic.
-        </p>
+        </p> */}
+
+<div className="roboto-regular text-lg" dangerouslySetInnerHTML={{ __html: hobbyText }}>
+</div>
       </div>
 
       <div className="my-10 flex justify-center">
