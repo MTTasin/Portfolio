@@ -1,7 +1,13 @@
 from django.contrib import admin
-from .models import pro_Pic, about_me, my_background, my_hobby_and_interest, portfolio, social_link, featured_portfolio, image
+from .models import pro_Pic, about_me, my_background, my_hobby_and_interest, portfolio, social_link, featured_portfolio, image, technology
 
 # Register your models here.
+
+
+
+@admin.register(technology)
+class technologyAdmin(admin.ModelAdmin):
+    list_display = ('title',)
 
 
 @admin.register(pro_Pic)

@@ -4,14 +4,52 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { Button } from "flowbite-react";
 import { useState, useEffect } from "react";
-
+import axios from "axios";
+import Loader from "../Components/Loader";
 
 export default function Projects() {
+  const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
 
 
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+  function fetchProjects() {
+    setLoading(true);
+    axios
+      .get("https://backend.tasinblog.com/portfolio/")
+      .then((response) => {
+        setData(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const cardData = data.map((item) => {
+    return (
+      <Card
+      key = {item.id}
+      id = {item.id}
+      title = {item.title}
+      technologies_used = {item.technologies}
+      images = {item.thumbnail}
+      />
+    );
+  });
+
+  console.log(data);
+
+
 
 
     return (
@@ -41,7 +79,10 @@ export default function Projects() {
         {/* <base href="https://tasinblog.com" /> */}
       </Helmet>
 
-
+      <div className={loading ? "bg-black h-[100vh] flex justify-center items-center" : "hidden"}>
+        <Loader />
+      </div>
+      <div className={loading ? "hidden" : "block"}>
 
       <div className="bg-black h-[100vh] text-6xl md:text-8xl w-full flex flex-col justify-center items-center text-white">
         <h1 className="uppercase text-center">My Projects</h1>
@@ -53,12 +94,7 @@ export default function Projects() {
 
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-20 mb-10">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {cardData}
       </div>
 
       <div className="my-10 flex justify-center">
@@ -69,7 +105,7 @@ export default function Projects() {
             </Button>
           </Link>
       </div>
-        
-        </>
+        </div>
+                </>
     );
 }

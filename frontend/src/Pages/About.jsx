@@ -5,25 +5,26 @@ import { Link } from "react-router-dom";
 import { Button } from "flowbite-react";
 import { useState, useEffect } from "react";
 import MyImg from "../Components/MyImg";
-import me from "./../assets/img/me.jpg"
+import me from "./../assets/img/me.jpg";
 import axios from "axios";
+import Loader from "../Components/Loader";
 
 export default function About() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-
-
+  const [loading, setLoading] = useState(false);
   const [backgroundText, setBackgroundText] = useState("");
   const [hobbyText, setHobbyText] = useState("");
-  
 
   function fetchBackgroundText() {
+    setLoading(true);
     axios
-      .get("http://192.168.0.105:8000/my_background/")
+      .get("https://backend.tasinblog.com/my_background/")
       .then((response) => {
         setBackgroundText(response.data[0].background);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -31,16 +32,17 @@ export default function About() {
   }
 
   function fetchHobbyText() {
+    setLoading(true);
     axios
-      .get("http://192.168.0.105:8000/my_hobby_and_interest/")
+      .get("https://backend.tasinblog.com/my_hobby_and_interest/")
       .then((response) => {
         setHobbyText(response.data[0].hobbies);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }
-
 
   useEffect(() => {
     fetchBackgroundText();
@@ -94,66 +96,48 @@ export default function About() {
         {/* <base href="https://tasinblog.com" /> */}
       </Helmet>
 
+
+      <div className={loading ? "bg-black h-[100vh] flex justify-center items-center" : "hidden"}>
+        <Loader />
+      </div>
+      <div className={loading ? "hidden" : "block"}>
       <div className="bg-black h-[100vh] text-6xl md:text-8xl w-full flex flex-col justify-center items-center text-white">
         <h1 className="uppercase text-center">About Me</h1>
         <p className="md:text-3xl text-xl league-spartan text-center letspace">
           IT'S ME, MOHAMMAD TAHMIM TASIN!
         </p>
       </div>
-<MyImg />
+      <MyImg />
       <div className="mt-20 mx-auto xl:w-1/2 lg:w-1/2 md:w-2/3 w-[90%] flex flex-col justify-center">
         <h2 className="text-3xl league-spartan-bold mb-5">My Background</h2>
-        {/* <p className="roboto-regular text-lg">
-          Hi! I am Mohammad Tahmim Tasin. I have a strong and diverse background
-          in both technology and design. My skills range from web development
-          using HTML, CSS, and JavaScript to advanced programming in Python,
-          ReactJS, and Django. I have experience with SQL, and I’m proficient in
-          using Tailwind and Git, making me well-rounded in both front-end and
-          back-end development. <br />
-          <br />I earned a Diploma in Computer Technology from Shyamoli Ideal
-          Polytechnic Institute in Chittagong, which established a solid
-          foundation for my technical skills. I’ve completed official courses in
-          Office Management, Graphic Design, and Django, further expanding my
-          expertise. <br />
-          <br />
-          Currently, I’m pursuing AMIE in Computer Science and Engineering from
-          the Institute of Engineers, Bangladesh, an education that’s equivalent
-          to a Bachelor’s degree. <br />
-          <br />
-          My continuous quest for knowledge and skill enhancement makes me a
-          valuable asset in the tech world.
-        </p> */}
 
-<div className="roboto-regular text-lg" dangerouslySetInnerHTML={{ __html: backgroundText }}>
-</div>
+        <div
+          className="roboto-regular text-lg"
+          dangerouslySetInnerHTML={{ __html: backgroundText }}
+        ></div>
 
         <h2 className="text-3xl league-spartan-bold mt-16 mb-5">
           My hobbies & interests
         </h2>
-        {/* <p className="roboto-regular text-lg">
-          I have a range of hobbies and interests that keep me engaged and
-          constantly learning. <br /> <br /> I love playing football, which keeps me active
-          and energized. I'm also an avid gamer, and you'll often find me
-          immersed in games like PUBG Mobile and Clash of Clans. <br /><br /> My curiosity
-          extends to Islamic History, where I enjoy delving into the rich
-          tapestry of events and figures that have shaped the world. <br /><br />Technology
-          fascinates me, and I like to stay updated on the latest advancements
-          and innovations. <br /><br /> I also dabble in politics, keeping a keen eye on
-          current events and developments. <br /><br /> All these interests make my life
-          vibrant and dynamic.
-        </p> */}
 
-<div className="roboto-regular text-lg" dangerouslySetInnerHTML={{ __html: hobbyText }}>
-</div>
+        <div
+          className="roboto-regular text-lg"
+          dangerouslySetInnerHTML={{ __html: hobbyText }}
+        ></div>
       </div>
 
       <div className="my-10 flex justify-center">
         <Link to="/contact" className="mx-auto">
-          <Button color="light" onClick={scrollToTop} className="px-16 md:px-32">
+          <Button
+            color="light"
+            onClick={scrollToTop}
+            className="px-16 md:px-32"
+          >
             <HiOutlineArrowRight className="mr-2 h-5 w-5" />
             Contact me
           </Button>
         </Link>
+      </div>
       </div>
     </>
   );

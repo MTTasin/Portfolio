@@ -14,7 +14,7 @@ export default function Footer() {
 
   function fetchSocialLinks() {
     axios
-      .get("http://192.168.0.105:8000/social_link/")
+      .get("https://backend.tasinblog.com/social_link/")
       .then((response) => {
         setSocialLinks(response.data[0]);
       })

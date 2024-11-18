@@ -30,6 +30,7 @@ router.register(r'about_me', about_meViewSet)
 router.register(r'my_background', my_backgroundViewSet)
 router.register(r'my_hobby_and_interest', my_hobby_and_interestViewSet)
 router.register(r'portfolio', portfolioViewSet)
+router.register(r'featured_portfolio', featured_portfolioViewSet)
 router.register(r'social_link', social_linkViewSet)
 
 urlpatterns = [

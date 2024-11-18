@@ -5,16 +5,20 @@ import { LuLinkedin, LuFacebook } from "react-icons/lu";
 import { FiGithub } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Loader from "../Components/Loader";
 
 export default function Contact() {
 
   const [socialLinks, setSocialLinks] = useState([]);
+const [loading, setLoading] = useState(false);
 
   function fetchSocialLinks() {
+    setLoading(true);
     axios
-      .get("http://192.168.0.105:8000/social_link/")
+      .get("https://backend.tasinblog.com/social_link/")
       .then((response) => {
         setSocialLinks(response.data[0]);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -53,6 +57,11 @@ export default function Contact() {
         {/* <base href="https://tasinblog.com" /> */}
       </Helmet>
 
+
+      <div className={loading ? "bg-black h-[100vh] flex justify-center items-center" : "hidden"}>
+        <Loader />
+      </div>
+      <div className={loading ? "hidden" : "block"}>
       <div className="bg-black h-[100vh] text-6xl md:text-8xl w-full flex flex-col justify-center items-center text-white">
         <h1 className="uppercase text-center">Contact Me</h1>
         <p className="md:text-3xl text-xl league-spartan text-center letspace">
@@ -135,6 +144,7 @@ export default function Contact() {
               </form>
             </div>
           </div>
+        </div>
       </div>
     </>
   );

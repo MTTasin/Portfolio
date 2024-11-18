@@ -21,11 +21,15 @@ class image(models.Model):
 
 class technology(models.Model):
     title = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
     
 
 class portfolio(models.Model):
     title = models.CharField(max_length=100)
     tagline = models.CharField(max_length=100)
+    thumbnail = models.ImageField(upload_to='portfolio/thumbnail/')
     images = models.ManyToManyField('image', blank=True)
     url = models.URLField(blank=True)
     description = CKEditor5Field('Text', config_name='extends')
@@ -40,7 +44,7 @@ class portfolio(models.Model):
 
 class featured_portfolio(models.Model):
     title = models.ForeignKey("portfolio", verbose_name=("Portfolio"), blank=True, on_delete=models.CASCADE)
-    technologies_used = models.ForeignKey('technology', blank=True, on_delete=models.CASCADE)
+    technologies_used = models.ManyToManyField('technology', blank=True)
 
     
 
