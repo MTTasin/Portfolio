@@ -1,0 +1,8 @@
+asgiref
+Django
+django-ckeditor-5
+django-cors-headers
+djangorestframework
+pillow
+sqlparse
+tzdata
