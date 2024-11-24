@@ -21,7 +21,7 @@ export default function Projects() {
     axios
       .get("https://backend.tasinblog.com/portfolio/")
       .then((response) => {
-        setData(response.data);
+        setData(response.data.reverse());
         setLoading(false);
       })
       .catch((error) => {
@@ -46,8 +46,6 @@ export default function Projects() {
       />
     );
   });
-
-  console.log(data);
 
 
 

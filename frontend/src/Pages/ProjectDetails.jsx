@@ -71,7 +71,6 @@ export default function ProjectDetails() {
     );
   });
 
-  console.log(data.images);
 
   return (
     <>
@@ -136,15 +135,25 @@ export default function ProjectDetails() {
               <FaCalendarDay className="mr-2 mt-1" />
               {data.date_time}
             </p>
-            <a href={data.url}>
+            {data.url ? (
+              <a href={data.url} target="_blank">
               <button className="bg-black text-white py-2 px-5 rounded-full w-full hover:bg-gray-800">
                 View live project
               </button>
             </a>
+            ): null}
+            {data.github ? (
+              <a href={data.github} target="_blank">
+              <button className="bg-gray-700 text-white py-2 px-5 rounded-full w-full hover:bg-gray-800 mt-5">
+                View on Github
+              </button>
+            </a>
+            ):
+            null}
           </div>
 
           <div className="md:col-span-1 w-[90%] mx-auto">
-            <h2 className="text-2xl league-spartan mb-2">Technology Used</h2>
+            <h2 className="text-2xl league-spartan md:my-2 mt-10 md:mb-2">Technology Used</h2>
 
             <div className="flex flex-col gap-2">
               

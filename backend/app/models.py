@@ -32,9 +32,11 @@ class portfolio(models.Model):
     thumbnail = models.ImageField(upload_to='portfolio/thumbnail/')
     images = models.ManyToManyField('image', blank=True)
     url = models.URLField(blank=True)
+    github = models.URLField(blank=True)
     description = CKEditor5Field('Text', config_name='extends')
     technologies = models.ManyToManyField('technology', blank=True)
-    date_time = models.DateTimeField(auto_now_add=True)
+    date_time = models.DateTimeField(blank=True, null=True)
+    
 
     
 

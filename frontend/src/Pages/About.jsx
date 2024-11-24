@@ -49,7 +49,7 @@ export default function About() {
     fetchHobbyText();
   }, []);
 
-  console.log(backgroundText, hobbyText);
+  
 
   return (
     <>

@@ -51,7 +51,7 @@ export default function Home() {
     axios
       .get("https://backend.tasinblog.com/featured_portfolio/")
       .then((response) => {
-        setFeatured_portfolio(response.data);
+        setFeatured_portfolio(response.data.reverse());
         setLoading(false);
       })
       .catch((error) => {

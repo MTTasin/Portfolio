@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0dla_ot@vlcso^kn&oy8!j945fy*$8d9@aie4__i+nm+976@6f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://backend.tasinblog.com", "backend.tasinblog.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -146,10 +146,12 @@ REST_FRAMEWORK = {
     ]
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "https://tasinblog.com",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "https://tasinblog.com",
+# ]
 
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 
