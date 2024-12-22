@@ -11,7 +11,7 @@ export default function MyImg() {
 
     function fetchProPic() {
         axios
-          .get("https://backend.tasinblog.com/pro_pic/")
+          .get("http://127.0.0.1:8000/pro_pic/")
           .then((response) => {
             setHobbyText(response.data[0].pro_pic);
           })

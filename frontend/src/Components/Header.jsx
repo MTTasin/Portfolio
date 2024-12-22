@@ -39,7 +39,7 @@ export default function Header() {
 
   function fetchSocialLinks() {
     axios
-      .get("https://backend.tasinblog.com/social_link/")
+      .get("http://127.0.0.1:8000/social_link/")
       .then((response) => {
         setSocialLinks(response.data[0]);
       })
