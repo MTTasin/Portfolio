@@ -21,7 +21,7 @@ export default function About() {
   function fetchBackgroundText() {
     setLoading(true);
     axios
-      .get("http://127.0.0.1:8000/my_background/")
+      .get("https://tasinportfolio.pythonanywhere.com/my_background/")
       .then((response) => {
         setBackgroundText(response.data[0].background);
         setLoading(false);
@@ -34,7 +34,7 @@ export default function About() {
   function fetchHobbyText() {
     setLoading(true);
     axios
-      .get("http://127.0.0.1:8000/my_hobby_and_interest/")
+      .get("https://tasinportfolio.pythonanywhere.com/my_hobby_and_interest/")
       .then((response) => {
         setHobbyText(response.data[0].hobbies);
         setLoading(false);

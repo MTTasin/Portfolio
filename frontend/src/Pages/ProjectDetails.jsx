@@ -25,7 +25,7 @@ export default function ProjectDetails() {
   function fetchSocialLinks() {
     setLoading(true);
     axios
-      .get("http://127.0.0.1:8000/social_link/")
+      .get("https://tasinportfolio.pythonanywhere.com/social_link/")
       .then((response) => {
         setSocialLinks(response.data[0]);
         setLoading(false);
@@ -38,7 +38,7 @@ export default function ProjectDetails() {
   function fetchData() {
     setLoading(true);
     axios
-      .get(`http://127.0.0.1:8000/portfolio/${params.id}/`)
+      .get(`https://tasinportfolio.pythonanywhere.com/portfolio/${params.id}/`)
       .then((response) => {
         setData(response.data);
         setLoading(false);
