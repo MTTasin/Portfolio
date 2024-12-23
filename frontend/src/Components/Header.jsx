@@ -6,6 +6,7 @@ import { LuFacebook, LuLinkedin } from "react-icons/lu";
 import { FiGithub } from "react-icons/fi";
 import { TbMenuDeep } from "react-icons/tb";
 import axios from "axios";
+import logo from "./../assets/logo.png"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,7 +63,7 @@ export default function Header() {
         <div className={`navbar-start mx-5 md:mx-20 ${isScrolled ? "my-0" : "my-10"}`}>
           <Link to="/" onClick={scrollToTop}>
             <img
-              src="/logo.png"
+              src={logo}
               alt="M.T. Tasin"
               className="w-[40px] h-[40px] md:w-[40px] md:h-[40px]"
             />

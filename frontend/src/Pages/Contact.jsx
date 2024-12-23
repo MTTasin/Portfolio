@@ -6,6 +6,7 @@ import { FiGithub } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../Components/Loader";
+import favicon from "./../assets/favicon.png"
 
 export default function Contact() {
 
@@ -43,7 +44,7 @@ const [loading, setLoading] = useState(false);
           property="og:description"
           content="Contact M.T. Tasin for more information about my projects, services and expertise."
         />
-        <meta property="og:image" content="/favicon.png" />
+        <meta property="og:image" content={favicon} />
         <meta property="og:url" content="https://tasinblog.com" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact M.T. Tasin" />
@@ -51,7 +52,7 @@ const [loading, setLoading] = useState(false);
           name="twitter:description"
           content="Contact M.T. Tasin for more information about my projects, services and expertise."
         />
-        <meta name="twitter:image" content="/favicon.png" />
+        <meta name="twitter:image" content={favicon} />
         <meta name="twitter:url" content="https://tasinblog.com" />
         <title>Contact M.T. Tasin</title>
         {/* <base href="https://tasinblog.com" /> */}

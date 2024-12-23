@@ -19,6 +19,7 @@ import { Button } from "flowbite-react";
 import Loader from "../Components/Loader";
 import axios from "axios";
 import { useState, useEffect, useId } from "react";
+import favicon from "./../assets/favicon.png"
 
 
 export default function Home() {
@@ -90,7 +91,7 @@ const cards = featured_portfolio.map((item) =>{
           property="og:description"
           content="I am a Full Stack Web Developer with the skills of React Django and SQL."
         />
-        <meta property="og:image" content="/favicon.png" />
+        <meta property="og:image" content={favicon} />
         <meta property="og:url" content="https://tasinblog.com" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="M.T. Tasin" />
@@ -98,7 +99,7 @@ const cards = featured_portfolio.map((item) =>{
           name="twitter:description"
           content="I am a Full Stack Web Developer with the skills of React Django and SQL."
         />
-        <meta name="twitter:image" content="/favicon.png" />
+        <meta name="twitter:image" content={favicon} />
         <meta name="twitter:url" content="https://tasinblog.com" />
         <title>M.T. Tasin</title>
         {/* <base href="https://tasinblog.com" /> */}

@@ -6,6 +6,7 @@ import { Button } from "flowbite-react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Loader from "../Components/Loader";
+import favicon from "./../assets/favicon.png"
 
 export default function Projects() {
   const scrollToTop = () => {
@@ -63,7 +64,7 @@ export default function Projects() {
           property="og:description"
           content="Projects of Mohammad Tahmim Tasin made with React, Django and SQL and lot's of  other tools."
         />
-        <meta property="og:image" content="/favicon.png" />
+        <meta property="og:image" content={favicon} />
         <meta property="og:url" content="https://tasinblog.com" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Projects of M.T. Tasin" />
@@ -71,7 +72,7 @@ export default function Projects() {
           name="twitter:description"
           content="Projects of Mohammad Tahmim Tasin made with React, Django and SQL and lot's of  other tools."
         />
-        <meta name="twitter:image" content="/favicon.png" />
+        <meta name="twitter:image" content={favicon} />
         <meta name="twitter:url" content="https://tasinblog.com" />
         <title>Projects of M.T. Tasin</title>
         {/* <base href="https://tasinblog.com" /> */}
