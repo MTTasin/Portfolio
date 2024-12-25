@@ -39,6 +39,7 @@ class portfolio(models.Model):
     description = CKEditor5Field('Text', config_name='extends')
     technologies = models.ManyToManyField('technology', blank=True)
     date_time = models.DateTimeField(blank=True, null=True)
+    position = models.IntegerField(blank=True, null=True)
 
     
 

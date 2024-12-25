@@ -22,7 +22,7 @@ export default function Projects() {
     axios
       .get("http://127.0.0.1:8000/portfolio/")
       .then((response) => {
-        setData(response.data.reverse());
+        setData(response.data);
         setLoading(false);
       })
       .catch((error) => {

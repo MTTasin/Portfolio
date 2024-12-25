@@ -44,7 +44,7 @@ class my_hobby_and_interestViewSet(viewsets.ModelViewSet):
 
 
 class portfolioViewSet(viewsets.ModelViewSet):
-    queryset = portfolio.objects.all()
+    queryset = portfolio.objects.all().order_by('-position')
     serializer_class = portfolioSerializer
     permission_classes = [IsOwnerOrReadOnly]
 

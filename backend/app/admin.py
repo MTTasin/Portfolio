@@ -32,7 +32,7 @@ class my_hobby_and_interestAdmin(admin.ModelAdmin):
 
 @admin.register(portfolio)
 class portfolioAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'position')
 
 @admin.register(social_link)
 class social_linkAdmin(admin.ModelAdmin):
