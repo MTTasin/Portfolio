@@ -16,7 +16,7 @@ const [loading, setLoading] = useState(false);
   function fetchSocialLinks() {
     setLoading(true);
     axios
-      .get("https://tasinportfolio.pythonanywhere.com/social_link/")
+      .get("http://127.0.0.1:8000/social_link/")
       .then((response) => {
         setSocialLinks(response.data[0]);
         setLoading(false);

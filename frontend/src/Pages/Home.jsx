@@ -35,7 +35,7 @@ export default function Home() {
   function fetchAboutText() {
     setLoading(true);
     axios
-      .get("https://tasinportfolio.pythonanywhere.com/about_me/")
+      .get("http://127.0.0.1:8000/about_me/")
       .then((response) => {
         setAboutText(response.data[0].about);
         setLoading(false);
@@ -50,7 +50,7 @@ export default function Home() {
   function fetchFeaturedPortfolio() {
     setLoading(true);
     axios
-      .get("https://tasinportfolio.pythonanywhere.com/featured_portfolio/")
+      .get("http://127.0.0.1:8000/featured_portfolio/")
       .then((response) => {
         setFeatured_portfolio(response.data.reverse());
         setLoading(false);

@@ -20,7 +20,7 @@ export default function Projects() {
   function fetchProjects() {
     setLoading(true);
     axios
-      .get("https://tasinportfolio.pythonanywhere.com/portfolio/")
+      .get("http://127.0.0.1:8000/portfolio/")
       .then((response) => {
         setData(response.data.reverse());
         setLoading(false);

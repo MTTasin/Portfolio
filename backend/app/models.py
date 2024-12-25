@@ -19,6 +19,9 @@ class my_hobby_and_interest(models.Model):
 class image(models.Model):
     image = models.ImageField(upload_to='portfolio/images/')
 
+    def __str__(self):
+        return self.image.url
+
 class technology(models.Model):
     title = models.CharField(max_length=100)
 
@@ -36,7 +39,6 @@ class portfolio(models.Model):
     description = CKEditor5Field('Text', config_name='extends')
     technologies = models.ManyToManyField('technology', blank=True)
     date_time = models.DateTimeField(blank=True, null=True)
-    
 
     
 
